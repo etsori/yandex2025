@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for
 
 app = Flask(__name__)
 
@@ -25,13 +25,33 @@ def promotion():
 
 @app.route('/image_mars')
 def image_mars():
-    s = '''
+    s = f'''
     <html>
     <head>
+    <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
     <title>Привет, Марс!</title>
     <h1>Жди нас, Марс!</h1>
     <img src = "/static/img/MARS.png">
-    <p>Вот она какая, красная планета!</p>
+    </head>
+    </html> 
+    '''
+    return s
+
+
+@app.route('/promotion_image')
+def promotion_image():
+    s = f'''
+    <html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <title>Привет, Марс!</title>
+    <h1>Жди нас, Марс!</h1>
+    <img src = "/static/img/MARS.png">
+    <p><div class="p-3 mb-2 bg-primary text-white">Человечество вырастает из детства.</div>
+    <div class="p-3 mb-2 bg-secondary text-white">Человечеству мала одна планета.</div>
+    <div class="p-3 mb-2 bg-success text-white">Мы сделаем обитаемыми безжизненные пока планеты.</div>
+    <div class="p-3 mb-2 bg-danger text-white">И начнем с Марса!</div>
+    <div class="p-3 mb-2 bg-warning text-dark">Присоединяйся!</div></p>
     </head>
     </html> 
     '''
