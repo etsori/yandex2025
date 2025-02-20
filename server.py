@@ -23,5 +23,20 @@ def promotion():
     return '<html>' + '<br>'.join(text) + '</html>'
 
 
+@app.route('/image_mars')
+def image_mars():
+    s = '''
+    <html>
+    <head>
+    <title>Привет, Марс!</title>
+    <h1>Жди нас, Марс!</h1>
+    <img src = "/static/img/MARS.png">
+    <p>Вот она какая, красная планета!</p>
+    </head>
+    </html> 
+    '''
+    return s
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
