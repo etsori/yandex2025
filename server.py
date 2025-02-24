@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def s():
-    return 'Привет'
+    return render_template('index.html', title='M')
 
 
 @app.route('/index')
@@ -81,8 +81,8 @@ def choice(planet_name):
 @app.route('/training/<prof>')
 def training(prof):
     if 'инженер' in prof or 'строитель' in prof:
-        return render_template('train.html', title2='Инженерные тренажеры', title='M')
-    return render_template('train.html', title2='Научные симуляторы', title='M')
+        return render_template('train.html', title2='Инженерные тренажеры')
+    return render_template('train.html', title2='Научные симуляторы')
 
 
 

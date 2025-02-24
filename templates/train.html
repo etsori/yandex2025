@@ -3,10 +3,10 @@
 {% block content %}
 <div>
     <h2>{{ title2 }}!</h2>
-     {% if title2='Инженерные тренажеры' %}
-        <img src = "/static/img/tr.png">
+    {% if title2 == 'Инженерные тренажеры' %}
+        <img src="/static/img/tr.jpg">
     {% else %}
-         <img src = "/static/img/trainn.png">
+        <img src="/static/img/trainn.jpg">
     {% endif %}
-</div>>
+</div>
 {% endblock %}
