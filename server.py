@@ -1,11 +1,11 @@
-from flask import Flask, url_for
+from flask import Flask, url_for, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def s():
-    return 'Миссия Колонизация Марса'
+    return render_template('index.html', user='e')
 
 
 @app.route('/index')
