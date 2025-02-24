@@ -43,6 +43,7 @@ def promotion_image():
     s = f'''
     <html>
     <head>
+    
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <title>Привет, Марс!</title>
     <h1>Жди нас, Марс!</h1>
@@ -56,6 +57,26 @@ def promotion_image():
     </html> 
     '''
     return s
+
+
+@app.route('/choice/<planet_name>')
+def choice(planet_name):
+    s = f'''
+    <html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <title>Варианты выбора</title>
+    <h1>Мое предложение: {planet_name}</h1>
+    <h2>Эта планета близка к Земле</h2>
+    <p><div class="p-3 mb-2 bg-primary text-white">На ней много полезных ресурсов;</div>
+    <div class="p-3 mb-2 bg-secondary text-white">На ней есть вода и атмосфера;</div>
+    <div class="p-3 mb-2 bg-success text-white">На ней есть небольшое магнитное поле;</div>
+    <div class="p-3 mb-2 bg-danger text-white">Наконец, она просто красива!</div>
+    </head>
+    </html> 
+    '''
+    return s
+
 
 
 if __name__ == '__main__':
