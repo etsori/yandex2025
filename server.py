@@ -1,4 +1,4 @@
-from flask import Flask, url_for, render_template
+from flask import Flask, url_for, render_template, request
 
 app = Flask(__name__)
 
@@ -108,6 +108,18 @@ lst_profess = [
 @app.route('/list_prof/<num>')
 def list_prof(num):
     return render_template('list_prof.html', list_prof=lst_profess, op=num)
+
+
+@app.route('/registration', methods=['POST', 'GET'])
+def registration():
+    if request.method == 'GET':
+        return render_template('registration.html')
+    elif request.method == 'POST':
+        man = dict()
+        man['email'] = request.form.get('email')
+        man['about'] = request.form.get('about')
+        man['scholl_class'] = request.form.get('class')
+        return render_template('auto_answer.html', **man)
 
 
 if __name__ == '__main__':
