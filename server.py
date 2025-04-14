@@ -110,6 +110,19 @@ def list_prof(num):
     return render_template('list_prof.html', list_prof=lst_profess, op=num)
 
 
+@app.route('/distribution')
+def distribution():
+    astronauts = [
+        "Ридли Скотт",
+        "Энди Уир",
+        "Марк Уотни",
+        "Венката Капур",
+        "Тедди Сандерс",
+        "Шон Бин"
+    ]
+    return render_template("distribution.html", astronauts=astronauts)
+
+
 @app.route('/registration', methods=['POST', 'GET'])
 def registration():
     if request.method == 'GET':
