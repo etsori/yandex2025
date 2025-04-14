@@ -144,6 +144,103 @@ def landscape():
     '''
     return s
 
+@app.route('/application', methods=['GET', 'POST'])
+def application():
+    if request.method == 'POST':
+        fname = request.form.get('firstname')
+        lname = request.form.get('lastname')
+        email = request.form.get('email')
+        education = request.form.get('education')
+        profession = request.form.get('profession')
+        gender = request.form.get('gender')
+        motivation = request.form.get('motivation')
+        ready = request.form.get('ready')
+
+        return f'<h2>Спасибо, {fname} {lname}! Ваша анкета принята.</h2>'
+
+    html = '''
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Анкета астронавта</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body class="bg-light">
+        <div class="container mt-5">
+            <h1 class="mb-4">Форма заявки на участие в миссии</h1>
+            <form method="post" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="lastname" class="form-label">Фамилия</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" required>
+                </div>
+                <div class="mb-3">
+                    <label for="firstname" class="form-label">Имя</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="education" class="form-label">Образование</label>
+                    <select class="form-select" id="education" name="education" required>
+                        <option>Начальное</option>
+                        <option>Среднее</option>
+                        <option>Высшее</option>
+                        <option>Аспирантура</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="profession" class="form-label">Основная профессия</label>
+                    <select class="form-select" id="profession" name="profession" required>
+                        <option>Инженер-исследователь</option>
+                        <option>Пилот</option>
+                        <option>Строитель</option>
+                        <option>Экзобиолог</option>
+                        <option>Врач</option>
+                        <option>Инженер по терраформированию</option>
+                        <option>Климатолог</option>
+                        <option>Специалист по радиационной защите</option>
+                        <option>Астрогеолог</option>
+                        <option>Гляциолог</option>
+                        <option>Инженер жизнеобеспечения</option>
+                        <option>Метеоролог</option>
+                        <option>Оператор марсохода</option>
+                        <option>Киберинженер</option>
+                        <option>Штурман</option>
+                        <option>Пилот дронов</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Пол</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
+                        <label class="form-check-label" for="male">Мужской</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
+                        <label class="form-check-label" for="female">Женский</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="motivation" class="form-label">Почему вы хотите участвовать в миссии?</label>
+                    <textarea class="form-control" id="motivation" name="motivation" rows="3" required></textarea>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="yes" id="ready" name="ready">
+                    <label class="form-check-label" for="ready">
+                        Готовы ли вы остаться на Марсе?
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+        </div>
+    </body>
+    </html>
+    '''
+    return html
+
 
 @app.route('/training/<prof>')
 def training(prof):
