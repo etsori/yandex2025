@@ -96,6 +96,55 @@ def res(nickname, level, rating):
     return s
 
 
+@app.route('/landscape')
+def landscape():
+    s = f'''
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Пейзажи Марса</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+        .carousel-container {{
+                width: 800px;
+                margin: 50px auto;}}
+        </style>
+    </head>
+    <body class="bg-light">
+        <div class="container text-center mt-5">
+            <h1 class="mb-4">Пейзажи Марса</h1>
+        </div>
+
+        <div class="carousel-container">
+            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/static/img/mars1.jpg" class="d-block w-100 rounded" alt="Mars 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/static/img/mars2.jpg" class="d-block w-100 rounded" alt="Mars 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/static/img/mars3.jpg" class="d-block w-100 rounded" alt="Mars 3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Предыдущий</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Следующий</span>
+                </button>
+            </div>
+        </div>
+    </body>
+    </html>
+    '''
+    return s
+
+
 @app.route('/training/<prof>')
 def training(prof):
     if 'инженер' in prof or 'строитель' in prof:
