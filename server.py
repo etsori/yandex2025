@@ -78,6 +78,24 @@ def choice(planet_name):
     return s
 
 
+@app.route('/results/<nickname>/<int:level>/<float:rating>')
+def res(nickname, level, rating):
+    s = f'''
+    <html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <title>Варианты выбора</title>
+    <h1>Результаты отбора</h1>
+    <h2>Претендент на участие в миссии: {nickname}</h2>
+    <p><div class="p-3 mb-2 bg-primary text-white"> Поздравляем! Ваш рейтинг после {level} этапа отбора:;</div>
+    <h3>Составляет {rating}!</h3>
+    <p><div class="p-3 mb-2 bg-secondary text-white">Желаем удачи!;</div>
+    </head>
+    </html> 
+    '''
+    return s
+
+
 @app.route('/training/<prof>')
 def training(prof):
     if 'инженер' in prof or 'строитель' in prof:
